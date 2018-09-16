@@ -1,73 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Raven's Loft</title>
 </head>
+
 <body>
-    <div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Raven's Loft Messaging Service - Oldtown</span>
+    </nav>
+
+    <div class="container mb-5">
         <div class="row">
-            <div class="jumbotron jumbotron-fluid bg-secondary">
+            <div class="jumbotron jumbotron-fluid bg-secondary mx-auto px-5 justify-content-center">
                 <h1 class="display-1">Westeros Raven Schedule</h1>
-                <h3>Greetings From OldTown</h3>
+                <h3 class="justify-center">Greetings From Oldtown</h3>
+                <h2 id="time">
+            </div>
+            <!--End jumbotron-->
 
-            </div> <!--End jumbotron-->
-
-        </div> <!--End jumbotron row-->
-
-        <div class="row">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Raven's Name</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Frequency</th>
-                        <th scope="col">Next Arrival</th>
-                        <th scope="col">Minutes Away</th>
-                    </tr>
-                <tbody id="ravens">
-
-                </tbody>
-                </thead>
-            </table>
-
-        </div> <!--End table row-->
+        </div>
+        <!--End jumbotron row-->
 
         <div class="row">
-            <form action="">
-                <div class="form-group">
-                    <label>Raven's Name</label>
-                    <input class="form-control" id="raven-name" type="text">
-                    <label>Destination</label>
-                    <input class="form-control" id="destination" type="text">
-                    <label>First Daily Departure</label>
-                    <input class="form-control" id="first-departure-time" type="text">
-                    <label>Frequency Of Departures</label>
-                    <input class="form-control" id="frequency" type="text">
-               
+            <div class="jumbotron jumbotron-fluid px-5">
+                <h1 id="welcome">Welcome!</h1>
+                <br>
+                <h5>Review your raven delivery options with the tool below. We charge 3 copper per mile for round trips below 200 miles, 5 copper for those between 200 and 1000 miles, and 8 copper for all round trips above 1000 miles.</h5>
+                <br>
+                <h6>1 gold = 100 silver<br>1 silver = 100 copper<br>1 gold = 1000 copper</h6>
+                <br>
+                <h6>Find the destination on the map. Click on it to determine the distance to Oldtown and then type the name of the destination in the form. When you press the button, your raven request will populate in the chart with the price for round trip as well as the estimated delivery time of the message and when you can expect a reply.</h6>
+                <br>   
+            </div>
+            <!--end hidden jumbotron-->
+        </div>
+        <!--end hidden row-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-2 p-2 border border-secondary">
+                    <div class="card-body">
+                            <h3>Flight Options</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Distance</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Departure Time</th>
+                                    <th scope="col">Estimated Arrival</th>
+                                    <th scope="col">Estimated Message Delivery Time</th>
+                                    <th scope="col">Estimated Return Message Delivery Time</th>
+                                    <th scope="col">Time until Return Message Arrives</th>
+                                </tr>
+                            <tbody id="ravens">
+
+                            </tbody>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
-                
-                <div class="form-group"></div>
-                    <button type="button" class="btn btn-submit btn-primary">Add Raven</button>  
+            </div>
+        </div>
+        <!--End table row-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-2 p-2 border border-secondary">
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group row">
+                                <label>Destination Name</label>
+                                <input class="form-control" id="destination" type="text">
+                            </div>
+                        </form>
+                        <form role="form">
+                            <div class="form-group row" >
+                                <label>Distance from Oldtown</label>
+                                <input id="current-distance" class='form-control' type='text' >
+                                <small class="form-text text-muted" >Click the destination on the map to find the distance from Oldtown. </small>
+                            </div>
+                        </form>
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="times">Departure Time</label>
+                                <select class="form-control" id="times">
+                                        <option id="06:00">06:00</option>
+                                        <option id="12:00">12:00</option>
+                                        <option id="18:00">18:00</option>
+                                      </select>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-            </form>
+        <div class="form-group"></div>
+        <button id="add-raven" type="button" class="btn btn-submit btn-primary">Add Raven</button>
+    </div>
 
-        </div> <!-- End form row-->
+    </form>
+
+    </div> <!-- End form row-->
+
+        <div class="row mx-auto justify-content-center ">
+            <div class="col-sm-12 mx-auto " > <img id="myimage" width="auto"
+                height="auto" class="img-fluid mx-auto" style="box-sizing: border-box" src="./assets/vector-map.jpg"
+                alt="GOT map">
+            </div>
+        </div>
+
+     </div>
+    <!--End of container-->
 
 
-    </div> <!--End of container-->
-    
 
-
-
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="assets/logic.js"></script>
 </body>
+
 </html>
